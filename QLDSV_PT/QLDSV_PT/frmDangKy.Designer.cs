@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnHuy = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.btnDangKy = new System.Windows.Forms.Button();
             this.cmbRole = new System.Windows.Forms.ComboBox();
             this.cmbGV = new System.Windows.Forms.ComboBox();
@@ -57,7 +57,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.groupBox1.Controls.Add(this.btnHuy);
+            this.groupBox1.Controls.Add(this.btnThoat);
             this.groupBox1.Controls.Add(this.btnDangKy);
             this.groupBox1.Controls.Add(this.cmbRole);
             this.groupBox1.Controls.Add(this.cmbGV);
@@ -79,18 +79,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ĐĂNG KÝ";
             // 
-            // btnHuy
+            // btnThoat
             // 
-            this.btnHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(404, 371);
-            this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(110, 42);
-            this.btnHuy.TabIndex = 31;
-            this.btnHuy.Text = "Hủy";
-            this.btnHuy.UseVisualStyleBackColor = false;
-            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Location = new System.Drawing.Point(404, 371);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(110, 42);
+            this.btnThoat.TabIndex = 31;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnDangKy
             // 
@@ -279,7 +279,7 @@
         private System.Windows.Forms.TextBox txtMAGV;
         private System.Windows.Forms.ComboBox cmbRole;
         private System.Windows.Forms.ComboBox cmbGV;
-        private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnDangKy;
         private DS dS;
         private System.Windows.Forms.BindingSource bdsGETDSGV;

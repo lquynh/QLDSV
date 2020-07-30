@@ -122,22 +122,6 @@ namespace QLDSV_PT
             }
         }
 
-        private void btnHuy_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = XtraMessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
-                      "Xác thực", MessageBoxButtons.YesNo);
-
-            if (dr == DialogResult.No)
-            {
-                return;
-            }
-            else if (dr == DialogResult.Yes)
-            {
-                this.Close();
-
-            }
-        }
-
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Program.MGroup == "PGV")
@@ -149,6 +133,22 @@ namespace QLDSV_PT
                 nRole = "KHOA";
             }
             
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Bạn thật sự muốn hủy thao tác đăng ký tài khoản?",
+                      "Xác thực", MessageBoxButtons.YesNo);
+
+            if (dr == DialogResult.No)
+            {
+                return;
+            }
+            else if (dr == DialogResult.Yes)
+            {
+                this.Close();
+
+            }
         }
     }
 }

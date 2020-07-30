@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel = new System.Windows.Forms.Panel();
+            this.butonCancel = new System.Windows.Forms.Button();
+            this.buttonOK = new System.Windows.Forms.Button();
+            this.button_Check = new System.Windows.Forms.Button();
+            this.txtMaSVMoi = new System.Windows.Forms.TextBox();
+            this.txtMaLopChuyenDen = new System.Windows.Forms.TextBox();
             this.txtMaSV = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,17 +47,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lookUpEditChuyenLop = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtMaLopChuyenDen = new System.Windows.Forms.TextBox();
-            this.txtMaSVMoi = new System.Windows.Forms.TextBox();
-            this.button_Check = new System.Windows.Forms.Button();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.butonCancel = new System.Windows.Forms.Button();
+            this.dS = new QLDSV_PT.DS();
+            this.sINHVIENBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sINHVIENTableAdapter = new QLDSV_PT.DSTableAdapters.SINHVIENTableAdapter();
+            this.tableAdapterManager = new QLDSV_PT.DSTableAdapters.TableAdapterManager();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbTTSinhVien)).BeginInit();
             this.gbTTSinhVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenSV.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditChuyenLop.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel
@@ -72,6 +79,58 @@
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(924, 434);
             this.panel.TabIndex = 0;
+            // 
+            // butonCancel
+            // 
+            this.butonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.butonCancel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butonCancel.ForeColor = System.Drawing.Color.White;
+            this.butonCancel.Location = new System.Drawing.Point(509, 316);
+            this.butonCancel.Name = "butonCancel";
+            this.butonCancel.Size = new System.Drawing.Size(103, 36);
+            this.butonCancel.TabIndex = 5;
+            this.butonCancel.Text = "Hủy";
+            this.butonCancel.UseVisualStyleBackColor = false;
+            // 
+            // buttonOK
+            // 
+            this.buttonOK.BackColor = System.Drawing.Color.Green;
+            this.buttonOK.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOK.ForeColor = System.Drawing.Color.White;
+            this.buttonOK.Location = new System.Drawing.Point(344, 316);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(103, 36);
+            this.buttonOK.TabIndex = 4;
+            this.buttonOK.Text = "Xác nhận";
+            this.buttonOK.UseVisualStyleBackColor = false;
+            // 
+            // button_Check
+            // 
+            this.button_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.button_Check.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Check.ForeColor = System.Drawing.Color.White;
+            this.button_Check.Location = new System.Drawing.Point(585, 206);
+            this.button_Check.Name = "button_Check";
+            this.button_Check.Size = new System.Drawing.Size(68, 26);
+            this.button_Check.TabIndex = 9;
+            this.button_Check.Text = "Check";
+            this.button_Check.UseVisualStyleBackColor = false;
+            // 
+            // txtMaSVMoi
+            // 
+            this.txtMaSVMoi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaSVMoi.Location = new System.Drawing.Point(395, 254);
+            this.txtMaSVMoi.Name = "txtMaSVMoi";
+            this.txtMaSVMoi.Size = new System.Drawing.Size(168, 26);
+            this.txtMaSVMoi.TabIndex = 7;
+            // 
+            // txtMaLopChuyenDen
+            // 
+            this.txtMaLopChuyenDen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMaLopChuyenDen.Location = new System.Drawing.Point(395, 206);
+            this.txtMaLopChuyenDen.Name = "txtMaLopChuyenDen";
+            this.txtMaLopChuyenDen.Size = new System.Drawing.Size(168, 26);
+            this.txtMaLopChuyenDen.TabIndex = 3;
             // 
             // txtMaSV
             // 
@@ -180,13 +239,18 @@
             // 
             // lookUpEditChuyenLop
             // 
+            this.lookUpEditChuyenLop.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.sINHVIENBindingSource, "MASV", true));
             this.lookUpEditChuyenLop.Location = new System.Drawing.Point(147, 36);
             this.lookUpEditChuyenLop.Name = "lookUpEditChuyenLop";
             this.lookUpEditChuyenLop.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lookUpEditChuyenLop.Properties.Appearance.Options.UseFont = true;
             this.lookUpEditChuyenLop.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditChuyenLop.Properties.DataSource = this.sINHVIENBindingSource;
+            this.lookUpEditChuyenLop.Properties.DisplayMember = "MASV";
             this.lookUpEditChuyenLop.Properties.NullText = "";
+            this.lookUpEditChuyenLop.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEditChuyenLop.Properties.ValueMember = "MASV";
             this.lookUpEditChuyenLop.Size = new System.Drawing.Size(156, 26);
             this.lookUpEditChuyenLop.TabIndex = 1;
             // 
@@ -199,57 +263,31 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhập MSSV:";
             // 
-            // txtMaLopChuyenDen
+            // dS
             // 
-            this.txtMaLopChuyenDen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaLopChuyenDen.Location = new System.Drawing.Point(395, 206);
-            this.txtMaLopChuyenDen.Name = "txtMaLopChuyenDen";
-            this.txtMaLopChuyenDen.Size = new System.Drawing.Size(168, 26);
-            this.txtMaLopChuyenDen.TabIndex = 3;
+            this.dS.DataSetName = "DS";
+            this.dS.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // txtMaSVMoi
+            // sINHVIENBindingSource
             // 
-            this.txtMaSVMoi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaSVMoi.Location = new System.Drawing.Point(395, 254);
-            this.txtMaSVMoi.Name = "txtMaSVMoi";
-            this.txtMaSVMoi.Size = new System.Drawing.Size(168, 26);
-            this.txtMaSVMoi.TabIndex = 7;
+            this.sINHVIENBindingSource.DataMember = "SINHVIEN";
+            this.sINHVIENBindingSource.DataSource = this.dS;
             // 
-            // button_Check
+            // sINHVIENTableAdapter
             // 
-            this.button_Check.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.button_Check.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_Check.ForeColor = System.Drawing.Color.White;
-            this.button_Check.Location = new System.Drawing.Point(585, 206);
-            this.button_Check.Name = "button_Check";
-            this.button_Check.Size = new System.Drawing.Size(68, 26);
-            this.button_Check.TabIndex = 9;
-            this.button_Check.Text = "Check";
-            this.button_Check.UseVisualStyleBackColor = false;
+            this.sINHVIENTableAdapter.ClearBeforeFill = true;
             // 
-            // buttonOK
+            // tableAdapterManager
             // 
-            this.buttonOK.BackColor = System.Drawing.Color.Green;
-            this.buttonOK.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(344, 316);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(103, 36);
-            this.buttonOK.TabIndex = 4;
-            this.buttonOK.Text = "Xác nhận";
-            this.buttonOK.UseVisualStyleBackColor = false;
-            // 
-            // butonCancel
-            // 
-            this.butonCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.butonCancel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butonCancel.ForeColor = System.Drawing.Color.White;
-            this.butonCancel.Location = new System.Drawing.Point(509, 316);
-            this.butonCancel.Name = "butonCancel";
-            this.butonCancel.Size = new System.Drawing.Size(103, 36);
-            this.butonCancel.TabIndex = 5;
-            this.butonCancel.Text = "Hủy";
-            this.butonCancel.UseVisualStyleBackColor = false;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DIEMTableAdapter = null;
+            this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.HOCPHITableAdapter = null;
+            this.tableAdapterManager.KHOATableAdapter = null;
+            this.tableAdapterManager.LOPTableAdapter = null;
+            this.tableAdapterManager.MONHOCTableAdapter = null;
+            this.tableAdapterManager.SINHVIENTableAdapter = this.sINHVIENTableAdapter;
+            this.tableAdapterManager.UpdateOrder = QLDSV_PT.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // frmChuyenLop
             // 
@@ -259,6 +297,7 @@
             this.Controls.Add(this.panel);
             this.Name = "frmChuyenLop";
             this.Text = "frmChuyenLop";
+            this.Load += new System.EventHandler(this.frmChuyenLop_Load);
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbTTSinhVien)).EndInit();
@@ -267,6 +306,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtMaLop.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenSV.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditChuyenLop.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sINHVIENBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +332,9 @@
         private System.Windows.Forms.Button button_Check;
         private System.Windows.Forms.TextBox txtMaSVMoi;
         private System.Windows.Forms.TextBox txtMaLopChuyenDen;
+        private DS dS;
+        private System.Windows.Forms.BindingSource sINHVIENBindingSource;
+        private DSTableAdapters.SINHVIENTableAdapter sINHVIENTableAdapter;
+        private DSTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

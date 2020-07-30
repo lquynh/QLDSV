@@ -63,7 +63,7 @@ namespace QLDSV_PT
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
-                ShowMdiChildren(typeof(frmLop));
+                ShowMdiChildren(typeof(frmMonHoc));
             }
         }
 
@@ -71,7 +71,7 @@ namespace QLDSV_PT
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
-                ShowMdiChildren(typeof(frmLop));
+                ShowMdiChildren(typeof(frmSinhVien));
             }
         }
 
@@ -87,7 +87,7 @@ namespace QLDSV_PT
         {
             if (!(Program.MGroup == Program.NhomQuyen[2]))
             {
-                ShowMdiChildren(typeof(frmLop));
+                ShowMdiChildren(typeof(frmChuyenLop));
             }
         }
 
