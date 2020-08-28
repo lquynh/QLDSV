@@ -29,7 +29,6 @@ namespace QLDSV_PT
             this.gETDSGVTableAdapter.Connection.ConnectionString = Program.connstr;
             this.gETDSGVTableAdapter.Fill(this.dS.GETDSGV);
 
-            
             if (Program.MGroup == "PGV")
             { 
                 cmbRole.Items.Add("PGV");

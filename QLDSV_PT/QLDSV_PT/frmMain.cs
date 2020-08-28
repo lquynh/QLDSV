@@ -13,8 +13,6 @@ namespace QLDSV_PT
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        // TODO: flag dangxuat giúp giải việc sự nhọc nhằng giữa sự kiện form closing với dòng lệnh Program.frmMain.Close();
-
         Boolean dangxuat = false;
         public frmMain()
         {
@@ -23,7 +21,7 @@ namespace QLDSV_PT
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            if (Program.MGroup == Program.NhomQuyen[2])// { "PGV", "KHOA", "PKT" }  --------PKT
+            if (Program.MGroup == "PKT") 
             {
                 btn_Class.Enabled = btn_Subject.Enabled = btn_Student.Enabled = btn_Mark.Enabled = btn_Change.Enabled = false;
 
@@ -53,7 +51,7 @@ namespace QLDSV_PT
 
         private void btn_Class_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            if (!(Program.MGroup == "PKT"))
             {
                 ShowMdiChildren(typeof(frmLop));
             }
@@ -61,7 +59,7 @@ namespace QLDSV_PT
 
         private void btn_Subject_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            if (!(Program.MGroup == "PKT"))
             {
                 ShowMdiChildren(typeof(frmMonHoc));
             }
@@ -69,7 +67,7 @@ namespace QLDSV_PT
 
         private void btn_Student_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            if (!(Program.MGroup == "PKT"))
             {
                 ShowMdiChildren(typeof(frmSinhVien));
             }
@@ -77,7 +75,7 @@ namespace QLDSV_PT
 
         private void btn_Mark_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            if (!(Program.MGroup == "PKT"))
             {
                 ShowMdiChildren(typeof(frmDiem));
             }
@@ -85,7 +83,7 @@ namespace QLDSV_PT
 
         private void btn_Change_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Program.MGroup == Program.NhomQuyen[2]))
+            if (!(Program.MGroup == "PKT"))
             {
                 ShowMdiChildren(typeof(frmChuyenLop));
             }
@@ -93,7 +91,7 @@ namespace QLDSV_PT
 
         private void btn_Fee_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if ((Program.MGroup == Program.NhomQuyen[2]))
+            if ((Program.MGroup == "PKT"))
             {
                 ShowMdiChildren(typeof(frmHocPhi));
             }
@@ -129,6 +127,21 @@ namespace QLDSV_PT
             {
                 this.Hide();
             }
+        }
+
+        private void btn_InDSSV_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.frmINDSSV));
+        }
+
+        private void btn_InHPL_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.frmINDSDHP));
+        }
+
+        private void btn_InPD_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShowMdiChildren(typeof(Report.frmINPD));
         }
     }
 }

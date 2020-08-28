@@ -67,7 +67,7 @@ namespace QLDSV_PT
         public static frmDangNhap FrmDangNhap;
 
         // lưu danh sách các nhóm quyền
-        public static string[] NhomQuyen = new string[3] { "PGV", "KHOA", "PKT" };
+        //public static string[] NhomQuyen = new string[3] { "PGV", "KHOA", "PKT" };
 
         // hàm thực hiện kết nối tới Database
         public static int KetNoi()
@@ -94,11 +94,9 @@ namespace QLDSV_PT
             }
         }
 
+        // ExecSqlDataReader tôc độ tải về nhanh hơn, dl chỉ để đọc, chỉ duyệt 1 chiều từ trên xuống
+        // form báo cáo thì dùng datareader
 
-        // ExecSqlDataReader tôc độ tải về nhanh hơn ExecSqlDataTable vì đối tượng nó chỉ quam tân chỉ select
-        // chỉ duyệt 1 chiều từ trên xuống
-        // vì vậy trong nghiệp vụ form báo cáo thì dùng datareader
-        // https://youtu.be/z8pgdIbtV3E?t=3233
 
         public static SqlDataReader ExecSqlDataReader(String strLenh)
         {
@@ -107,7 +105,6 @@ namespace QLDSV_PT
 
             //xác định kiểu lệnh cho sqlcmd là kiểu text.
             sqlcmd.CommandType = CommandType.Text;
-  //          sqlcmd.CommandTimeout = 600;
             if (Program.Conn.State == ConnectionState.Closed) Program.Conn.Open();
             try
             {
@@ -122,7 +119,7 @@ namespace QLDSV_PT
             }
         }
 
-        // tải về cho phép xem xóa sửa ==> tốc độ tải chậm hơn cái ở trên
+        // datatable: dl cho phép xem xóa sửa ==> tốc độ tải chậm hơn datareader
         // duyệt 2 chiều dưới lên
         // form nhập liệu thì dùng datatable.
 
@@ -135,6 +132,7 @@ namespace QLDSV_PT
             Conn.Close();
             return dt;
         }
+
         [STAThread]
         static void Main()
         {

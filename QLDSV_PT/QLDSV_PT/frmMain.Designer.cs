@@ -41,6 +41,10 @@
             this.btn_InDSThi = new DevExpress.XtraBars.BarButtonItem();
             this.btn_TaoTK = new DevExpress.XtraBars.BarButtonItem();
             this.btn_DangXuat = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_InPD = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_InBDMH = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_InBDTK = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_InHPL = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -51,6 +55,10 @@
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup12 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup13 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -59,14 +67,6 @@
             this.tsslMAGV = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslHOTEN = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslNHOM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_InPD = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_InBDMH = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_InBDTK = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup11 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_InHPL = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabbedManager)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -169,6 +169,7 @@
             this.btn_InDSSV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InDSSV.ImageOptions.LargeImage")));
             this.btn_InDSSV.LargeWidth = 90;
             this.btn_InDSSV.Name = "btn_InDSSV";
+            this.btn_InDSSV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_InDSSV_ItemClick);
             // 
             // btn_InDSThi
             // 
@@ -198,6 +199,44 @@
             this.btn_DangXuat.LargeWidth = 90;
             this.btn_DangXuat.Name = "btn_DangXuat";
             this.btn_DangXuat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_DangXuat_ItemClick);
+            // 
+            // btn_InPD
+            // 
+            this.btn_InPD.Caption = "PHIẾU ĐIỂM";
+            this.btn_InPD.Id = 34;
+            this.btn_InPD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InPD.ImageOptions.Image")));
+            this.btn_InPD.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InPD.ImageOptions.LargeImage")));
+            this.btn_InPD.LargeWidth = 90;
+            this.btn_InPD.Name = "btn_InPD";
+            this.btn_InPD.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_InPD_ItemClick);
+            // 
+            // btn_InBDMH
+            // 
+            this.btn_InBDMH.Caption = "BẢNG ĐIỂM MÔN HỌC";
+            this.btn_InBDMH.Id = 35;
+            this.btn_InBDMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InBDMH.ImageOptions.Image")));
+            this.btn_InBDMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InBDMH.ImageOptions.LargeImage")));
+            this.btn_InBDMH.LargeWidth = 90;
+            this.btn_InBDMH.Name = "btn_InBDMH";
+            // 
+            // btn_InBDTK
+            // 
+            this.btn_InBDTK.Caption = "BẢNG ĐIỂM TỔNG KẾT";
+            this.btn_InBDTK.Id = 36;
+            this.btn_InBDTK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InBDTK.ImageOptions.Image")));
+            this.btn_InBDTK.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InBDTK.ImageOptions.LargeImage")));
+            this.btn_InBDTK.LargeWidth = 90;
+            this.btn_InBDTK.Name = "btn_InBDTK";
+            // 
+            // btn_InHPL
+            // 
+            this.btn_InHPL.Caption = "HỌC PHÍ LỚP";
+            this.btn_InHPL.Id = 37;
+            this.btn_InHPL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InHPL.ImageOptions.Image")));
+            this.btn_InHPL.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InHPL.ImageOptions.LargeImage")));
+            this.btn_InHPL.LargeWidth = 90;
+            this.btn_InHPL.Name = "btn_InHPL";
+            this.btn_InHPL.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_InHPL_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -267,6 +306,26 @@
             this.ribbonPageGroup7.ItemLinks.Add(this.btn_InDSThi);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btn_InPD);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.btn_InBDMH);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            // 
+            // ribbonPageGroup10
+            // 
+            this.ribbonPageGroup10.ItemLinks.Add(this.btn_InBDTK);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            // 
+            // ribbonPageGroup11
+            // 
+            this.ribbonPageGroup11.ItemLinks.Add(this.btn_InHPL);
+            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
+            // 
             // ribbonPage3
             // 
             this.ribbonPage3.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -331,62 +390,6 @@
             this.tsslNHOM.Name = "tsslNHOM";
             this.tsslNHOM.Size = new System.Drawing.Size(49, 19);
             this.tsslNHOM.Text = "NHOM";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.btn_InPD);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            // 
-            // btn_InPD
-            // 
-            this.btn_InPD.Caption = "PHIẾU ĐIỂM";
-            this.btn_InPD.Id = 34;
-            this.btn_InPD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InPD.ImageOptions.Image")));
-            this.btn_InPD.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InPD.ImageOptions.LargeImage")));
-            this.btn_InPD.LargeWidth = 90;
-            this.btn_InPD.Name = "btn_InPD";
-            // 
-            // ribbonPageGroup9
-            // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.btn_InBDMH);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            // 
-            // btn_InBDMH
-            // 
-            this.btn_InBDMH.Caption = "BẢNG ĐIỂM MÔN HỌC";
-            this.btn_InBDMH.Id = 35;
-            this.btn_InBDMH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InBDMH.ImageOptions.Image")));
-            this.btn_InBDMH.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InBDMH.ImageOptions.LargeImage")));
-            this.btn_InBDMH.LargeWidth = 90;
-            this.btn_InBDMH.Name = "btn_InBDMH";
-            // 
-            // ribbonPageGroup10
-            // 
-            this.ribbonPageGroup10.ItemLinks.Add(this.btn_InBDTK);
-            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
-            // 
-            // btn_InBDTK
-            // 
-            this.btn_InBDTK.Caption = "BẢNG ĐIỂM TỔNG KẾT";
-            this.btn_InBDTK.Id = 36;
-            this.btn_InBDTK.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InBDTK.ImageOptions.Image")));
-            this.btn_InBDTK.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InBDTK.ImageOptions.LargeImage")));
-            this.btn_InBDTK.LargeWidth = 90;
-            this.btn_InBDTK.Name = "btn_InBDTK";
-            // 
-            // ribbonPageGroup11
-            // 
-            this.ribbonPageGroup11.ItemLinks.Add(this.btn_InHPL);
-            this.ribbonPageGroup11.Name = "ribbonPageGroup11";
-            // 
-            // btn_InHPL
-            // 
-            this.btn_InHPL.Caption = "HỌC PHÍ LỚP";
-            this.btn_InHPL.Id = 37;
-            this.btn_InHPL.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btn_InHPL.ImageOptions.Image")));
-            this.btn_InHPL.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btn_InHPL.ImageOptions.LargeImage")));
-            this.btn_InHPL.LargeWidth = 90;
-            this.btn_InHPL.Name = "btn_InHPL";
             // 
             // frmMain
             // 

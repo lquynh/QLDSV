@@ -27,13 +27,10 @@ namespace QLDSV_PT
             DataTable dt = new DataTable();
             //gọi 1 view và trả về dưới dạng datatable
             dt = Program.ExecSqlDataTable("SELECT * FROM V_DS_PHANMANH");
-
-
             // cất dt vào biến toàn cục Bds_Dspm
             Program.Bds_Dspm.DataSource = dt;
 
-            // đoạn code liên kết giữa bds với combobox
-            //        Utils.BindingDataToComBo(cmbKhoa, dt);
+            //lấy 2 khoa
             DataTable dt2 = new DataTable();
             dt2 = Program.ExecSqlDataTable("SELECT TOP 2 * FROM V_DS_PHANMANH");
             Program.Bds_Dskhoa.DataSource = dt2;
@@ -60,8 +57,6 @@ namespace QLDSV_PT
             if (txtLogin.Text.Trim() == "" || txtPass.Text.Trim() == "")
             {
                 MessageBox.Show("Tài khoản đăng nhập không được trống.", "Lỗi đăng nhập!", MessageBoxButtons.OK);
-
-                // trỏ con trỏ chuột về ô user...
                 txtLogin.Focus();
                 return;
             }
@@ -87,7 +82,6 @@ namespace QLDSV_PT
                 MessageBox.Show("Login bạn nhập không có quyền truy cập dữ liệu\nBạn xem lại username, password.", "", MessageBoxButtons.OK);
                 return;
             }
-
             try
             {
                 Program.MHoten = Program.MyReader.GetString(1);
@@ -107,9 +101,9 @@ namespace QLDSV_PT
             Program.frmMain = new frmMain();
 
             // hiện thông tin tài khoản
-            Program.frmMain.tsslMAGV.Text = "MÃ GIẢNG VIÊN : " + Program.UserName.Trim();
-            Program.frmMain.tsslHOTEN.Text = "HỌ VÀ TÊN : " + Program.MHoten.Trim();
-            Program.frmMain.tsslNHOM.Text = "NHÓM : " + Program.MGroup;
+            Program.frmMain.tsslMAGV.Text = "MÃ GIẢNG VIÊN: " + Program.UserName.Trim();
+            Program.frmMain.tsslHOTEN.Text = "HỌ VÀ TÊN: " + Program.MHoten.Trim();
+            Program.frmMain.tsslNHOM.Text = "NHÓM: " + Program.MGroup;
 
             Program.frmMain.Show();
             //Program.FrmDangNhap.Visible = false;

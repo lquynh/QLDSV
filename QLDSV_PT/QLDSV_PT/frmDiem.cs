@@ -27,19 +27,19 @@ namespace QLDSV_PT
         private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.bdsMonHoc.EndEdit();
+            this.bdsMONHOC.EndEdit();
             this.tableAdapterManager.UpdateAll(this.dS);
 
         }
 
         private void frmDiem_Load(object sender, EventArgs e)
-        {
+        {     
             cmbKhoa.DataSource = Program.Bds_Dskhoa;
             cmbKhoa.DisplayMember = "TENKHOA";
             cmbKhoa.ValueMember = "TENSERVER";
             cmbKhoa.SelectedIndex = Program.MKhoa;
 
-            if (Program.MGroup == Program.NhomQuyen[1])
+            if (Program.MGroup == "KHOA")
             {
                 cmbKhoa.Enabled = false;
             }
@@ -47,25 +47,27 @@ namespace QLDSV_PT
             {
                 cmbKhoa.Enabled = true;
             }
-
-            btnGhi.Enabled = btnCapNhat.Enabled = false;
-
+           
+            btnGhi.Enabled = btnCapNhat.Enabled = false;          
             dS.EnforceConstraints = false;
-            // TODO: This line of code loads data into the 'dS.MONHOC' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
             this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
             this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
-            // TODO: This line of code loads data into the 'dS.LOP' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'dS.MONHOC' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
             this.lOPTableAdapter.Fill(this.dS.LOP);
-
+            
+            
+            
             cmbLanThi.DataSource = soLanThi;
             cmbLanThi.SelectedIndex = 0;
+
             sP_LAYDIEMSINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
         }
 
-
         private void cmbKhoa_SelectedIndexChanged(object sender, EventArgs e)
         {
+          
             txtLop.Text = txtMonHoc.Text = "";
             if (cmbKhoa.SelectedValue.ToString() != "System.Data.DataRowView")
             {
@@ -89,13 +91,17 @@ namespace QLDSV_PT
             else
             {
                 dS.EnforceConstraints = false;
-                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;     // lấy data của Site tương ứng
-                this.lOPTableAdapter.Fill(dS.LOP);
+                this.lOPTableAdapter.Connection.ConnectionString = Program.connstr;
+                this.lOPTableAdapter.Fill(this.dS.LOP);
+                //cmbLop.SelectedIndex = 1;
+                //cmbLop.SelectedIndex = 0;
                 this.mONHOCTableAdapter.Connection.ConnectionString = Program.connstr;
                 this.mONHOCTableAdapter.Fill(this.dS.MONHOC);
-
+                //cmbMonHoc.SelectedIndex = 1;
+                //cmbMonHoc.SelectedIndex = 0;
                 this.sP_LAYDIEMSINHVIENTableAdapter.Connection.ConnectionString = Program.connstr;
             }
+      
         }
 
         private void cmbMonHoc_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,7 +149,7 @@ namespace QLDSV_PT
                             btnCapNhat.Enabled = false;
                             for (int i = 0; i < bdsSPDIEMSV.Count; i++)
                             {
-                                ((DataRowView)bdsSPDIEMSV[i])["DIEM"] = 0;
+                                ((DataRowView)bdsSPDIEMSV[i])["DIEM"] = "";
                             }
                         }
                         else if (kiemtradiemtheolan(txtLop.Text, txtMonHoc.Text, lanthi) == 1)
@@ -190,7 +196,7 @@ namespace QLDSV_PT
                                 btnCapNhat.Enabled = false;
                                 for (int i = 0; i < bdsSPDIEMSV.Count; i++)
                                 {
-                                    ((DataRowView)bdsSPDIEMSV[i])["DIEM"] = 0;
+                                    ((DataRowView)bdsSPDIEMSV[i])["DIEM"] = "";
                                 }
                             }
                             else if (kiemtradiemtheolan(txtLop.Text, txtMonHoc.Text, lanthi) == 1)
@@ -258,8 +264,8 @@ namespace QLDSV_PT
                     Program.Sqlcmd = Program.Conn.CreateCommand();
                     Program.Sqlcmd.CommandType = CommandType.StoredProcedure;
                     Program.Sqlcmd.CommandText = str_sp;
-                    Program.Sqlcmd.Parameters.Add("@MASV", SqlDbType.NChar).Value = ((DataRowView)bdsSPDIEMSV[i])["MASV"].ToString();
-                    Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = txtMonHoc.Text;
+                    Program.Sqlcmd.Parameters.Add("@MASV", SqlDbType.VarChar).Value = ((DataRowView)bdsSPDIEMSV[i])["MASV"].ToString();
+                    Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.VarChar).Value = txtMonHoc.Text;
                     Program.Sqlcmd.Parameters.Add("@LAN", SqlDbType.Int).Value = lanthi;
                     Program.Sqlcmd.Parameters.Add("@DIEM", SqlDbType.Float).Value = diem;
                     Program.Sqlcmd.ExecuteNonQuery();
@@ -270,11 +276,6 @@ namespace QLDSV_PT
                 btnGhi.Enabled = false;
                 btnCapNhat.Enabled = true;
             }
-        }
-
-        private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.Close();
         }
 
         private void btnCapNhat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -316,8 +317,8 @@ namespace QLDSV_PT
                         Program.Sqlcmd = Program.Conn.CreateCommand();
                         Program.Sqlcmd.CommandType = CommandType.StoredProcedure;
                         Program.Sqlcmd.CommandText = str_sp;
-                        Program.Sqlcmd.Parameters.Add("@MASV", SqlDbType.NChar).Value = ((DataRowView)bdsSPDIEMSV[i])["MASV"].ToString();
-                        Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = txtMonHoc.Text;
+                        Program.Sqlcmd.Parameters.Add("@MASV", SqlDbType.VarChar).Value = ((DataRowView)bdsSPDIEMSV[i])["MASV"].ToString();
+                        Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.VarChar).Value = txtMonHoc.Text;
                         Program.Sqlcmd.Parameters.Add("@LAN", SqlDbType.Int).Value = lanthi;
                         Program.Sqlcmd.Parameters.Add("@DIEM", SqlDbType.Float).Value = diem;
                         Program.Sqlcmd.ExecuteNonQuery();
@@ -331,8 +332,8 @@ namespace QLDSV_PT
                         Program.Sqlcmd = Program.Conn.CreateCommand();
                         Program.Sqlcmd.CommandType = CommandType.StoredProcedure;
                         Program.Sqlcmd.CommandText = str_sp;
-                        Program.Sqlcmd.Parameters.Add("@MASV", SqlDbType.NChar).Value = ((DataRowView)bdsSPDIEMSV[i])["MASV"].ToString();
-                        Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = txtMonHoc.Text;
+                        Program.Sqlcmd.Parameters.Add("@MASV", SqlDbType.VarChar).Value = ((DataRowView)bdsSPDIEMSV[i])["MASV"].ToString();
+                        Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.VarChar).Value = txtMonHoc.Text;
                         Program.Sqlcmd.Parameters.Add("@LAN", SqlDbType.Int).Value = lanthi;
                         Program.Sqlcmd.Parameters.Add("@DIEM", SqlDbType.Float).Value = diem;
                         Program.Sqlcmd.ExecuteNonQuery();
@@ -351,13 +352,12 @@ namespace QLDSV_PT
             Program.Sqlcmd = Program.Conn.CreateCommand();
             Program.Sqlcmd.CommandType = CommandType.StoredProcedure;
             Program.Sqlcmd.CommandText = str_sp;
-            Program.Sqlcmd.Parameters.Add("@MALOP", SqlDbType.NChar).Value = malop;
-            Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = mamh;
+            Program.Sqlcmd.Parameters.Add("@MALOP", SqlDbType.VarChar).Value = malop;
+            Program.Sqlcmd.Parameters.Add("@MAMH", SqlDbType.VarChar).Value = mamh;
             Program.Sqlcmd.Parameters.Add("@LAN", SqlDbType.Int).Value = lan;
-            //Program.Sqlcmd.Parameters.Add("@LOAI", SqlDbType.NChar).Value = "A";
             Program.Sqlcmd.Parameters.Add("@Ret", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             Program.Sqlcmd.ExecuteNonQuery();
-            String ret = Program.Sqlcmd.Parameters["@RET"].Value.ToString();
+            String ret = Program.Sqlcmd.Parameters["@Ret"].Value.ToString();
             if (ret == "1")
             {
                 return 1; //đã có điểm
@@ -368,7 +368,11 @@ namespace QLDSV_PT
             }
             return 0;
         }
+
+        private void btnThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
     }
+
 }
-
-
